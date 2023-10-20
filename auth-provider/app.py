@@ -9,5 +9,4 @@ app = create_app({
     'SQLALCHEMY_DATABASE_URI': 'sqlite:///db.sqlite',
 })
 
-if os.environ.get('INIT_DB') == "true":
-    init_db()
+init_db()
