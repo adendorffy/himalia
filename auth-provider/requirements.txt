@@ -10,5 +10,5 @@ MarkupSafe==2.1.3
 pycparser==2.21
 SQLAlchemy==2.0.20
 typing_extensions==4.7.1
-Werkzeug==2.3.7
+Werkzeug
 PyJWT==2.8.0
