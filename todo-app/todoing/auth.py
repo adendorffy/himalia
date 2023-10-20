@@ -248,7 +248,7 @@ def google_login():
 
 @bp.route('/himalia_login')
 def himalia_login():
-    redirect_uri = "http://127.0.0.1:5000/authorize/Todoing"
+    redirect_uri = "https://himalia.onrender.com//authorize/Todoing"
     return redirect(redirect_uri)
 
 
@@ -265,14 +265,14 @@ def himalia_callback():
     if auth_code:
         data = {'code': auth_code}
         response = requests.post(
-            'http://127.0.0.1:5000/oauth/token', data=data)
+            'https://himalia.onrender.com//oauth/token', data=data)
 
         if response.status_code == 200:
             token = response.json()
             access_token = token['access_token']
 
             # Assuming your Flask app is running on port 5000
-            url = "http://127.0.0.1:5000/userinfo"
+            url = "https://himalia.onrender.com//userinfo"
             headers = {
                 "Authorization": f"Bearer {access_token}"
             }
