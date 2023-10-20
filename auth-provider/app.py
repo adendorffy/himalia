@@ -9,4 +9,4 @@ app = create_app({
     'SQLALCHEMY_DATABASE_URI': 'sqlite:///db.sqlite',
 })
 
-init_db()
+init_db(app)
