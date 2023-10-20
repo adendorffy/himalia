@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Todoing</a>
+
+        <div class="navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                {% if g.user %}
+                <li class="nav-item">
+                    <span class="navbar-text">{{ g.user['email'] }}</span>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('auth.logout') }}" class="btn btn-secondary ml-2">Log Out</a>
+                </li>
+                <!-- Delete User Form -->
+                <li class="nav-item">
+                    <form action="{{ url_for('auth.delete_user') }}" method="post" id="deleteUserForm" class="ml-2">
+                        <input type="submit" value="Delete User" class="btn btn-danger">
+                    </form>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href="{{ url_for('auth.register') }}" class="btn btn-primary ml-2">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('auth.login') }}" class="btn btn-secondary ml-2">Log In</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="container mt-4">
+            <section class="content">
+                {% for message in messages %}
+                    <div class="alert alert-danger" role="alert">{{ message }}</div>
+                {% endfor %}
+            </section>
+        </div>
+    {% endif %}
+{% endwith %}
+
+{% block content %}
+{% endblock %}
+
+<!-- Optional JavaScript -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    const deleteUserForm = document.getElementById("deleteUserForm");
+    deleteUserForm.addEventListener("submit", function(event) {
+        const confirmation = confirm("Are you sure you want to delete your account?");
+        if (!confirmation) {
+            event.preventDefault();
+        }
+    });
+</script>
+
+</body>
+
+</html>

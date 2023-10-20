@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1 class="text-center my-4">{% block title %}Log In{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form method="post">
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+
+                <input type="submit" value="Login" class="btn btn-primary mb-3">
+
+                <a href="google_login" class="btn btn-light border d-flex align-items-center mb-2">
+                    <img class="google-icon mr-2" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" style="width: 20px; height: 20px;" />
+                    Sign in with Google
+                </a>
+
+                <a href="himalia_login" class="btn btn-light border d-flex align-items-center">
+                    <img class="himalia-icon mr-2" src="https://www.hubpng.com/files/preview/813x764/11676602569chgqflwkla83shq3nppo2fa9wictxdmugcxiono8lr8trlzecxn4ssd0jbitdij5wm6vc156eqlanuspocy7mleqjyaevvmreux8.png" style="width: 20px; height: 20px;" />
+                    Sign in with Himalia
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

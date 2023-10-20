@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    {% if g.user %}
+    <div class="text-center">
+        <h2>Your Todos</h2>
+        
+        <ul class="list-group mt-4">
+            {% for todo in todos %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <input type="checkbox" class="mr-2" {% if todo['checked'] %} checked {% endif %} data-todo-id="{{ todo['id'] }}"
+                        onclick="toggleCheckbox(this)">
+
+                    <span {%if todo['checked'] %} style="text-decoration: line-through;" {% endif %} class="task"> {{
+                        todo['title'] }} </span>
+                </div>
+                
+                <div>
+                    <form action="{{ url_for('todoing.update', id=todo['id']) }}" class="d-inline-block edit-button">
+                        <input type="submit" value="Edit" class="btn btn-info btn-sm">
+                    </form>
+                    <form action="{{ url_for('todoing.delete', id=todo['id']) }}" method="post" class="d-inline-block delete-button">
+                        <input type="submit" value="Delete" onclick="return confirm('Are you sure?');" class="btn btn-danger btn-sm">
+                    </form>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <form action="{{ url_for('todoing.create') }}" method="post" class="mt-4">
+            <div class="input-group mb-3">
+                <input type="text" name="title" id="title" value="{{ request.form['title'] }}" placeholder="Enter a new task" class="form-control">
+                <div class="input-group-append">
+                    <input type="submit" value="Add" class="btn btn-primary">
+                </div>
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <!-- This section will be displayed to users who are not logged in -->
+    <div class="text-center">
+        <h2>Welcome to Todoing!</h2>
+        <p>
+            Manage your tasks effortlessly and never miss a deadline.
+            Organize, prioritize, and get more done with Todoing.
+        </p>
+        <img src="https://d12y7sg0iam4lc.cloudfront.net/s/img/marketing/top-todo-app/to-do-list.png" alt="Illustration" style="width: 50%; margin-bottom: 20px;"> <!-- Optional -->
+    </div>
+    {% endif %}
+</div>
+
+<script>
+    function toggleCheckbox(checkbox) {
+        const todoId = checkbox.getAttribute('data-todo-id');
+        fetch(`/check/${todoId}`, {
+            method: 'POST'
+        }).then(response => {
+            if (response.ok) {
+                // Toggle the checkbox's appearance
+                const span = checkbox.nextElementSibling;
+                if (checkbox.checked) {
+                    span.style.textDecoration = 'line-through';
+                } else {
+                    span.style.textDecoration = 'none';
+                }
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+    }
+</script>
+
+{% endblock %}
+s

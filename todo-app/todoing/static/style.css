@@ -1,0 +1,98 @@
+/* Base button styling */
+
+.button-style {
+  display: inline-block;
+  align-items: center;
+  width: 184px;
+  height: 40px;
+  background-color: #4285f4;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 3px;
+  margin-left: 5px;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  font-family: sans-serif;
+  border: none;
+  text-align: center;
+}
+
+.button-style:hover {
+  box-shadow: 0 0 6px #4285f4;
+}
+
+.button-style:active {
+  background: #1669F2;
+}
+
+/* ... (rest of your styles, especially those not related to buttons) ... */
+
+/* Consistent styling for all buttons */
+
+.log-button,
+.himalia-btn,
+input[type="submit"],
+form.edit-button input[type="submit"],
+form.delete-button input[type="submit"] {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Added to center text in the button */
+}
+
+/* Adjustments for icon wrappers if you still want to use them */
+
+.google-btn .google-icon-wrapper,
+.himalia-btn .himalia-icon-wrapper {
+  width: 35px;
+  height: 35px;
+  border-radius: 2px;
+  background-color: #fff;
+  margin-right: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.google-btn .google-icon,
+.himalia-btn .himalia-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Form elements style */
+
+input[type="text"],
+input[type="password"],
+input.edit-input {
+  padding: 5px 10px; /* Consistent padding */
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box; /* to ensure padding doesn't increase width */
+}
+
+/* If you want certain buttons to have a different color, you can still override them below. */
+
+.himalia-btn {
+  background-color: #4CAF50;
+}
+
+.himalia-btn:hover {
+  box-shadow: 0 0 6px #0ca82e;
+}
+
+.himalia-btn:active {
+  background: #0ca82e;
+}
+
+form.delete-button input[type="submit"] {
+  background-color: red;
+}
+
+form.delete-button input[type="submit"]:hover {
+  background-color: maroon;
+}

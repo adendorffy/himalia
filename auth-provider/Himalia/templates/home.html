@@ -1,0 +1,58 @@
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<div class="container">
+    <!-- Header Section -->
+    <header class="bg-primary text-white text-center py-4 shadow">
+        <h1>Himalia Auth Provider</h1>
+    </header>
+
+    <!-- Landing Section (Create User and Client) -->
+    <section class="landing-section p-4 bg-light rounded">
+        <h2 class="text-center mb-4">Actions</h2>
+        <div class="d-flex justify-content-around">
+            <a href="{{ url_for('.create_client') }}" class="btn btn-success">Create Client</a>
+            <a href="{{ url_for('.create_user') }}" class="btn btn-primary">Create User</a>
+        </div>
+    </section>
+    
+
+    <div class="b-example-divider"></div>
+
+    <!-- Clients Section -->
+    <div class="d-flex flex-wrap justify-content-evenly p-4 gap-4 py-md-5">
+
+    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+        <div class="list-group">
+            <h2 class="mb-4 text-center">Clients</h2>
+            {% for client in clients %}
+            <a href="/client/{{ client.id }}" class="list-group-item list-group-item-action d-flex gap-3 py-3 align-items-center" aria-current="true">
+                <h6 class="mb-0">{{client.username}}</h6>
+                <form action="{{ url_for('.delete_client', client_id=client.id) }}" method="post" class="ms-auto">
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+
+
+    <!-- Users Section -->
+    <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+        <div class="list-group">
+            <h2 class="mb-4 text-center">Users</h2>
+            {% for user in users %}
+            <a href="/user/{{ user.id }}" class="list-group-item list-group-item-action d-flex gap-3 py-3 align-items-center" aria-current="true">
+                <h6 class="mb-0">{{user.name}}</h6>
+                <form action="{{ url_for('.delete_user', user_id=user.id) }}" method="post" class="ms-auto">
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+</div>

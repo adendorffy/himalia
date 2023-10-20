@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form method="post">
+
+                <div class="form-group">
+                    <label for="title">New Todo: </label>
+                    <input type="text" name="title" id="title" class="form-control" value="{{ request.form['title'] }}" required>
+                </div>
+
+                <input type="submit" value="Save" class="btn btn-primary">
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
