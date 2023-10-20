@@ -15,6 +15,6 @@ PyJWT==2.8.0
 pyproject_hooks==1.0.0
 SQLAlchemy==2.0.20
 typing_extensions==4.7.1
-Werkzeug==2.3.7
+Werkzeug
 zope.event==5.0
 zope.interface==6.1
