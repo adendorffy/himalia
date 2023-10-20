@@ -1,6 +1,6 @@
 from Himalia.app import create_app, init_db
 import os
-from gevent.pywsgi import WSGIServer
+PYTHON_VERSION="3.11.6"
 
 app = create_app({
     'SECRET_KEY': 'secret',
