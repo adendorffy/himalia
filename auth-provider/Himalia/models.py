@@ -15,7 +15,7 @@ class User(db.Model):
         super(User, self).__init__(**kwargs)
         if 'password' in kwargs:
             self.password = generate_password_hash(
-                kwargs['password'], method='scrypt')
+                kwargs['password'])
 
     def __str__(self):
         return self.username
