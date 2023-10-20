@@ -7,7 +7,7 @@ charset-normalizer==3.3.0
 click==8.1.7
 cryptography==41.0.4
 Flask
-gevent==23.9.1
+gevent
 greenlet==3.0.0
 gunicorn==21.2.0
 idna==3.4
