@@ -13,6 +13,8 @@ bp = Blueprint('todoing', __name__)
 @bp.route('/')
 def index():
     db = get_db()
+    if g is None:
+        return render_template('main/index.html', todos=[])
     if g.user is not None:
         # Retrieve todos for the logged-in user
         todos = db.execute(

@@ -12,4 +12,4 @@ if [ "$run_init_db" == "yes" ]; then
     flask --app todoing init-db
 fi
 
-flask --app todoing run --debug --port 8080
+flask run --debug --port 8080
