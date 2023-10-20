@@ -248,7 +248,7 @@ def google_login():
 
 @bp.route('/himalia_login')
 def himalia_login():
-    redirect_uri = "https://himalia.onrender.com//authorize/Todoing"
+    redirect_uri = "https://himalia.onrender.com/authorize/Todoing"
     return redirect(redirect_uri)
 
 
